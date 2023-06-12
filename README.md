@@ -16,6 +16,26 @@ uvicorn main:app --reload
 ```
 to automatically restart the kernel everytime there's a change saved inside `main.py`
 
+```bash
+// to create a h5 file
+model.save('studytips.h5')
+
+//to export a json file
+from tensorflow.keras.preprocessing.text import tokenizer_from_json
+import json
+
+tokenizer_json = tokenizer.to_json()
+with open('tokenizer.json', 'w', encoding='utf-8') as f:
+    f.write(json.dumps(tokenizer_json, ensure_ascii=False))
+//
+datasets = pd.read_csv('./data.csv')
+model = tf.keras.models.load_model('./studytips.h5')
+with open('./tokenizer.json') as f:
+    tokenizer_data = json.load(f)
+    tokenizer = tf.keras.preprocessing.text.tokenizer_from_json(tokenizer_data)
+```
+
+
 # sentences-similarity model deployment
 ```bash
 // to create image api model prediction sentences
@@ -49,26 +69,8 @@ IMAGES: [gcr.io/capstone-387513/api-model:0.1](http://gcr.io/capstone-387513/api
 STATUS: SUCCESS
 </aside>
 
+
 # study-tips model deployment
-```bash
-// to create a h5 file
-model.save('studytips.h5')
-
-//to export a json file
-from tensorflow.keras.preprocessing.text import tokenizer_from_json
-import json
-
-tokenizer_json = tokenizer.to_json()
-with open('tokenizer.json', 'w', encoding='utf-8') as f:
-    f.write(json.dumps(tokenizer_json, ensure_ascii=False))
-//
-datasets = pd.read_csv('./data.csv')
-model = tf.keras.models.load_model('./studytips.h5')
-with open('./tokenizer.json') as f:
-    tokenizer_data = json.load(f)
-    tokenizer = tf.keras.preprocessing.text.tokenizer_from_json(tokenizer_data)
-```
-
 ```bash
 // to create image api model prediction study tips
 gcloud builds submit --tag [gcr.io/$DEVSHELL_PROJECT_ID/api-model-study-tips:0.1](http://gcr.io/$DEVSHELL_PROJECT_ID/api-model:0.1)
