@@ -20,17 +20,15 @@ with open('./tokenizer.json') as f:
 def predict(input):
 
     predict_sequence = tokenizer.texts_to_sequences([input])
-    predict_padded = pad_sequences(predict_sequence, maxlen=10, padding='post')
+    predict_padded = pad_sequences(predict_sequence, maxlen=max_length, padding=pad_typev)
     predictions = model.predict(predict_padded)
     return predictions
 
 
 app = FastAPI()
 
-
 class Item(BaseModel):
     input: str
-
 
 @app.post("/")
 def add_item(item: Item):
