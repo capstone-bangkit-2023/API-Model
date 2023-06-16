@@ -49,7 +49,7 @@ ID: 5158895c-ab8f-4827-b982-9833f2c75242
 CREATE_TIME: 2023-06-12T15:31:57+00:00
 DURATION: 50S
 SOURCE: gs://capstone-387513_cloudbuild/source/1686583915.537893-c2269f4ca2be4f06bc81968265e6cdc9.tgz
-IMAGES: [gcr.io/capstone-387513/api-model-sentence:0.1](http://gcr.io/capstone-387513/api-model-sentence:0.1)
+IMAGES: gcr.io/capstone-387513/api-model-sentence:0.1
 STATUS: SUCCESS
 ```
 
@@ -57,33 +57,16 @@ STATUS: SUCCESS
 # prediction-profesi model deployment
 ```bash
 // to create image api model prediction profesi
-gcloud builds submit --tag [gcr.io/$DEVSHELL_PROJECT_ID/api-model:0.1](http://gcr.io/$DEVSHELL_PROJECT_ID/api-model:0.1)
+gcloud builds submit --tag [gcr.io/$DEVSHELL_PROJECT_ID/api-model-profesi:0.](http://gcr.io/$DEVSHELL_PROJECT_ID/api-model:0.1)1
 ```
 
 💡 Container Image Deploy v1
 ---
 ```bash
-ID: f9ae2c21-7bed-427e-a525-761728f740e9
-CREATE_TIME: 2023-06-06T06:59:21+00:00
-DURATION: 6M29S
-SOURCE: gs://capstone-387513_cloudbuild/source/1686034757.32025-db57ba326a104752bce8cbede304be71.tgz
-IMAGES: [gcr.io/capstone-387513/api-model:0.1](http://gcr.io/capstone-387513/api-model:0.1)
-STATUS: SUCCESS
-```
-
-# study-tips model deployment
-```bash
-// to create image api model prediction study tips
-gcloud builds submit --tag [gcr.io/$DEVSHELL_PROJECT_ID/api-model-study-tips:0.1](http://gcr.io/$DEVSHELL_PROJECT_ID/api-model:0.1)
-```
-
-💡 Container Image Deploy v1
----
-```bash
-ID: ffd874e7-b171-432a-9372-3ffdc5bf83aa
-CREATE_TIME: 2023-06-06T07:28:04+00:00
-DURATION: 6M42S
-SOURCE: gs://capstone-387513_cloudbuild/source/1686036481.405515-97622569f88e4f2f863bc72492d2e142.tgz
-IMAGES: [gcr.io/capstone-387513/api-model-study-tips:0.1](http://gcr.io/capstone-387513/api-model-study-tips:0.1)
+ID: 9823a108-868b-450b-ba1b-6adb4d516a18
+CREATE_TIME: 2023-06-14T14:22:19+00:00
+DURATION: 6M13S
+SOURCE: gs://capstone-387513_cloudbuild/source/1686752536.554975-01c993260cb94f238c0dce820dbda788.tgz
+IMAGES: gcr.io/capstone-387513/api-model-profesi:0.1
 STATUS: SUCCESS
 ```
