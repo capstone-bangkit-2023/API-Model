@@ -1,42 +1,26 @@
-import os
-import httpx
 import uvicorn
 from fastapi import FastAPI
 from pydantic import BaseModel
-import asyncio
+from model import model_predict
 
 app = FastAPI()
-token = os.environ.get("API_TOKEN")
-
-API_URL = "https://api-inference.huggingface.co/models/sentence-transformers/paraphrase-albert-small-v2"
-headers = {"Authorization": f"Bearer {token}"}
 
 class TextRequest(BaseModel):
     data: str
     answer: str
 
-async def query(payload):
-    async with httpx.AsyncClient() as client:
-        response = await client.post(API_URL, headers=headers, json=payload)
-        return response.json()
+data = 'Pantun adalah salah satu jenis puisi lama yang sangat luas dikenal di Asia tenggara. Pantun memiliki sajak ABAB. Dalam bahasa Sunda pantun disebut paparikan dan dalam bahasa Batak, pantun dikenal dengan sebutan umpasa.'
+answer = 'Pantun merupakan salah satu jenis puisi lama pada sastra indonesia'
 
-async def main(sentence1, sentence2):
-    output = await query({
-        "inputs": {
-            "source_sentence": sentence1,
-            "sentences": [
-                sentence2
-            ]
-        },
-    })
-    return output[0]
-
-@app.get('/')
-def hello():
-    return ('Hello World!')
+# @app.get('/')
+# def starting():
+#     return ('Hello World!')
 
 @app.post("/predict")
-def predict(text_request: TextRequest):
+async def predict(text_request: TextRequest):
     data, answer = text_request.data, text_request.answer
-    result = asyncio.run(main(data,answer))
-    return {'result': result}
+    result = model_predict(data, answer)
+    return {'data': result}
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
