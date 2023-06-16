@@ -1,5 +1,27 @@
-# FastAPI
+<br/>
+<p align="center">
+  <a href="https://github.com/ShaanCoding/ReadME-Generator">
+    <img src="https://raw.githubusercontent.com/capstone-bangkit-2023/mobile-app/main/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" alt="Logo" width="100" height="100">
+  </a>
 
+  <h3 align="center">Ayo Pintar</h3>
+
+  <p align="center">
+    Smart Quiz Platform
+
+# API Model
+We create 2 API(s) model for this application, there is sentence Similarity API and Prediction Profesi API, both of them created using FastAPI and deployed on cloud run
+
+# API Documentation
+```
+https://docs.google.com/document/d/111WUYr6W-JranLW7XzRj0Vhxbm0PTrXQd-cgmBWAN9Q/edit?usp=sharing
+```
+  
+# Build With
+1. Fast API
+2. Dockerfile
+    
+## FastAPI
 FastAPI is a modern web framework for building RESTful APIs in Python. It was first released in 2018 and has quickly gained popularity among developers due to its ease of use, speed and robustness. FastAPI is based on Pydantic and type hints to validate, serialize, and deserialize data.
 
 Documentation: https://fastapi.tiangolo.com
